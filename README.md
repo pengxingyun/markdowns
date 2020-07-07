@@ -17,6 +17,14 @@ JavaScript算法
 
 [Javascript数据结构与算法之队列](https://github.com/pengxingyun/mds/blob/master/%E7%AE%97%E6%B3%95/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E9%98%9F%E5%88%97.md)
 
+[Javascript数据结构与算法之回溯算法](https://github.com/pengxingyun/markdowns/blob/master/%E7%AE%97%E6%B3%95/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.md)
+
+[Javascript数据结构与算法之贪心算法](https://github.com/pengxingyun/markdowns/blob/master/%E7%AE%97%E6%B3%95/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.md)
+
+[Javascript数据结构与算法之广度优先搜索](https://github.com/pengxingyun/markdowns/blob/master/%E7%AE%97%E6%B3%95/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.md)
+
+[Javascript数据结构与算法之深度优先搜索](https://github.com/pengxingyun/markdowns/blob/master/%E7%AE%97%E6%B3%95/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.md)
+
 干前端面试试题
 
 [web前端大厂10道经典面试题汇总](https://github.com/pengxingyun/mds/blob/master/interview/web%E5%89%8D%E7%AB%AF%E5%A4%A7%E5%8E%8210%E9%81%93%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB.md)
