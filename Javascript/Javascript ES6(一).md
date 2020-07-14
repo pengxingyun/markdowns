@@ -20,7 +20,7 @@
 ````js
 console.log(typeof value); // "undefined"
 if(condition){
-    console.log(typeof val); // 引用错误
+    console.log(typeof value); // 引用错误
     let value = 'val';
 }
 ````
