@@ -441,3 +441,151 @@ wm.has(first); // true
 first = null; // 移除对于键的引用 同时wm也移除了
 wm.has(first); // false
 ````
+
+### 迭代器与生成器
+迭代器**Iterator**接口主要是用于`for...of`消费。还有扩展运算符`...`
+原生具备 Iterator 接口的数据结构如下。
+* Array
+* Map
+* Set
+* String
+* TypedArray
+* 函数的 arguments 对象
+* NodeList 对象
+
+这说明上面的数据结构天生就支持`for...of`。如果想要原生未具备 `Iterator` 接口的数据结构支持`for...of`遍历，就得自己实现迭代器了。
+
+生成器是一个特殊的函数，可以在被调用时自动创建一个迭代器。生成器的定义用一个星号（ `*` ）来表示，使用 `yield` 关键字能指明在每次成功的 `next()` 方法调用时应当返回什么值。
+
+下面是一个例子：
+````js
+// let createIterator = function *() {} 生成器函数表达式
+// 函数声明
+function *createIterator() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+// 生成器能像正规函数那样被调用，但会返回一个迭代器
+let iterator = createIterator();
+console.log(iterator.next().value); // 1
+console.log(iterator.next().value); // 2
+console.log(iterator.next().value); // 3
+
+let obj = {};
+// 直接挂载到obj[Symbol.iterator] 使得obj可以被for...of
+obj[Symbol.iterator] = createIterator;
+for(let item of obj){
+    console.log(item);
+}
+// 1
+// 2
+// 3
+````
+> 不能将箭头函数创建为生成器。
+
+#### 访问默认迭代器
+````js
+let values = [1, 2, 3];
+let iterator = values[Symbol.iterator]();
+console.log(iterator.next()); // "{ value: 1, done: false }"
+console.log(iterator.next()); // "{ value: 2, done: false }"
+console.log(iterator.next()); // "{ value: 3, done: false }"
+console.log(iterator.next()); // "{ value: undefined, done: true }"
+````
+
+#### 创建可迭代对象
+````js
+obj = {
+    items: [1,2,3],
+    *[Symbol.iterator]() {
+        for(let item of this.items) {
+            yield item;
+        }
+    }
+}
+
+for(let item of obj) {
+    console.log(item);
+}
+
+// 1
+// 2
+// 3
+[...obj] // [1,2,3]
+
+````
+
+#### 集合的迭代器
+`ES6` 具有三种集合对象类型：数组、 `Map` 与 `Set`。这三种类型都拥有如下的迭代器，有助于探索它们的内容：
+* entries() ：返回一个包含键值对的迭代器；
+* values() ：返回一个包含集合中的值的迭代器；
+* keys() ：返回一个包含集合中的键的迭代器。
+
+````js
+let arr = [1,2,3];
+let set = new Set([10, 20, 30]);
+let map = new Map([['a', 'a'], ['b', 'b'], ['c', 'c']]);
+
+// 与使用 arr.values() 相同
+for (let value of arr) {
+console.log(value);
+}
+// 与使用 set.values() 相同
+for (let value of set) {
+console.log(value);
+}
+// 与使用 map.entries() 相同
+for (let [key, value] of map) { // 解构
+console.log(key, value);
+}
+
+// 1 2 3
+// 10 20 30
+// a a
+// b b
+// c c
+````
+
+#### 传递参数给迭代器
+````js
+function *createIterator() {
+let first = yield 1;
+let second = yield first + 2; // 4 + 2
+// return 9; 如果有return后面的将不会执行 9将会当成最后一个值被返回
+yield second + 3; // 5 + 3
+}
+let iterator = createIterator();
+console.log(iterator.next()); // "{ value: 1, done: false }"
+console.log(iterator.next(4)); // "{ value: 6, done: false }" first = 4;
+console.log(iterator.next(5)); // "{ value: 8, done: false }" second = 5;
+console.log(iterator.next()); // "{ value: undefined, done: true }"
+````
+
+#### 生成器委托
+````js
+function *createNumberIterator() {
+    yield 1;
+    yield 2;
+    return 3;
+}
+function *createRepeatingIterator(count) {
+    for (let i=0; i < count; i++) {
+        yield "repeat";
+    }
+}
+function *createCombinedIterator() {
+    let result = yield *createNumberIterator(); // 这里不会输出return的值 不输出3
+    yield result;
+    yield *createRepeatingIterator(result); // result被传入了createRepeatingIterator
+}
+var iterator = createCombinedIterator();
+console.log(iterator.next()); // "{ value: 1, done: false }"
+console.log(iterator.next()); // "{ value: 2, done: false }"
+console.log(iterator.next()); // "{ value: 3, done: false }"
+console.log(iterator.next()); // "{ value: "repeat", done: false }"
+console.log(iterator.next()); // "{ value: "repeat", done: false }"
+console.log(iterator.next()); // "{ value: "repeat", done: false }"
+console.log(iterator.next()); // "{ value: undefined, done: true }"
+````
