@@ -269,7 +269,7 @@ console.log(object[symbols[0]]); // "12345"
 * Symbol.replace ：供 `String.prototype.replace()` 函数使用的一个方法，用于替换子字符串。
 * Symbol.search ：供 `String.prototype.search()` 函数使用的一个方法，用于定位子字符串。
 * Symbol.split ：供 `String.prototype.split()` 函数使用的一个方法，用于分割字符串。
-````js
+  ````js
   let MyStringSymbol = {
       [Symbol.match](string) {
         console.log('Symbol.match', string);
@@ -288,7 +288,7 @@ console.log(object[symbols[0]]); // "12345"
   'abc'.replace(MyStringSymbol, 'a') // Symbol.replace abc
   'abc'.search(MyStringSymbol) // Symbol.search abc
   'abc'.split(MyStringSymbol) // Symbol.split abc
-````
+  ````
 * Symbol.iterator ：返回迭代器的一个方法。
   对象进行`for...of`循环时，会调用`Symbol.iterator`方法，返回该对象的默认遍历器
   ````js
