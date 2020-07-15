@@ -229,12 +229,12 @@ console.log(object[symbols[0]]); // "12345"
   当其他对象使用instanceof运算符，判断是否为该对象的实例时，会调用这个方法。
   ````js
   // 当其他对象使用instanceof运算符，判断是否为该对象的实例时，会调用这个方法。
-  let test = {
-        [Symbol.hasInstance]() {
-            console.log('test-----hasInstance')
-        }
-}
-1 instanceof test // test-----hasInstance
+   let test = {
+      [Symbol.hasInstance]() {
+         console.log('test-----hasInstance')
+      }
+    }
+    1 instanceof test // test-----hasInstance
   ````
   
 * Symbol.isConcatSpreadable ：一个布尔类型值，在集合对象作为参数传递给`Array.prototype.concat()` 方法时，指示是否要将该集合的元素扁平化。
