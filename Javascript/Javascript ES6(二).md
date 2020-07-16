@@ -222,7 +222,7 @@ console.log(object[symbols[0]]); // "12345"
   ````js
   obj instanceof Array
   ```` 
-  等价于 
+  等价于:
   ````js
   Array[Symbol.hasInstance](obj)
   ````
