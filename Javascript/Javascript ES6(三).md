@@ -117,6 +117,23 @@ console.log(numbers.findIndex(n => n > 33)); // 2 找第一个>33的下标
 `find()` 与 `findIndex()` 方法在查找满足特定条件的数组元素时非常有用。但若想查找特定
 值，则使用 `indexOf()` 与 `lastIndexOf()` 方法会是更好的选择。
 
+#### fill
+`fill()` 方法能使用特定值填充数组中的一个或多个元素。
+
+全部填充
+````js
+let numbers = [1, 2, 3, 4];
+numbers.fill(1);
+console.log(numbers.toString()); // 1,1,1,1
+````
+部分填充
+````js
+let numbers = [1, 2, 3, 4];
+numbers.fill(1, 2);
+console.log(numbers.toString()); // 1,2,1,1
+numbers.fill(0, 1, 3);
+console.log(numbers.toString()); // 1,0,0,1
+````
 #### copyWithin
 `copyWithin()` 方法与 `fill()` 类似，可以一次性修改数组的多个元素。
 ````js
