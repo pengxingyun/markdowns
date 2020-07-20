@@ -18,7 +18,7 @@ function bubbleSort(arr) {
 * 空间复杂度**O(1)**：在原数组上操作。
 
 ### 选择排序
-原理：每次找到当前最大值放到当前位置。
+原理：往后查找，找到当前最大值放到当前位置。
 ````js
 function selectSort(arr) {
    for(let i = 0, len = arr.length; i < len - 1; i++){
