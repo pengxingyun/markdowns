@@ -48,3 +48,17 @@ Javascript干货
 [Javascript ES6(二)](https://github.com/pengxingyun/markdowns/blob/master/Javascript/Javascript%20ES6(%E4%BA%8C).md)
 
 [Javascript ES6(三)](https://github.com/pengxingyun/markdowns/blob/master/Javascript/Javascript%20ES6(%E4%B8%89).md)
+
+设计模式
+
+[Javascript观察者模式](https://github.com/pengxingyun/markdowns/blob/master/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Javascript%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.md)
+
+[Javascript装饰器模式](https://github.com/pengxingyun/markdowns/blob/master/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Javascript%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F.md)
+
+[Javascript享元模式](https://github.com/pengxingyun/markdowns/blob/master/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Javascript%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F.md)
+
+网络
+
+[HTTP传输流程](https://github.com/pengxingyun/markdowns/blob/master/%E7%BD%91%E7%BB%9C/HTTP%E4%BC%A0%E8%BE%93%E6%B5%81%E7%A8%8B.md)
+
+[HTTP状态码](https://github.com/pengxingyun/markdowns/blob/master/%E7%BD%91%E7%BB%9C/HTTP%E7%8A%B6%E6%80%81%E7%A0%81.md)
