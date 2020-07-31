@@ -1,8 +1,8 @@
 # Javascript之观察者模式
 
-观察者模式又被称为发布-订阅模式，是设计模式中的一种行为型模式；
+**观察者模式**又被称为**发布-订阅模式**，是设计模式中的一种行为型模式；
 
-观察者模式定义了一种一对多的对象依赖关系，当被依赖的对象的状态发生了改变，所有依赖它的对象都会得到通知；
+**观察者模式**定义了一种一对多的对象依赖关系，当被依赖的对象的状态发生了改变，所有依赖它的对象都会得到通知。
 
 最常用的是定义元素的点击事件：
 ````js
@@ -63,22 +63,46 @@ Observer.fire('fn2'); // fn2 is called
 Observer.remove('fn2'); // delete----- fn2
 ````
 
-实现双向绑定
+简单实现`$emit`，`$on`，`$off`
 
 ````js
-let Observer = (obj, key, value) => {
-    obj[key] = value;
-}
-let o1 = {}
-
-let o2 = {}
-
-Object.defineProperty(o1, 'name', {
-    get() {
-        return name;
-    },
-    set(val) {
-        Observer(o2, 'name', val);
+class Event {
+    constructor() {
+        this._callbacks = {};
     }
+    $off(name) {
+        delete this._callbacks[name];
+    }
+    $on(name, fn) {
+        (this._callbacks[name] || (this._callbacks[name] = [])).push(fn)
+    }
+    $emit(name, args) {
+        let cbs = this._callbacks[name];
+        if(!cbs) return cbs;
+        cbs.forEach(cb => {
+            cb.call(this, args);
+        })
+    }
+}
+
+let event = new Event();
+event.$on('event1', function(arg) {
+    console.log('event1', this, arg);
 })
+
+event.$on('event1', function(arg) {
+    console.log('event1 again', this, arg);
+})
+
+event.$on('event2', function(arg) {
+    console.log('event2', this, arg);
+})
+
+event.$emit('event1', {name: 'abc'})
+// event1 Event {_callbacks: {…}}_callbacks: {event1: Array(2)}__proto__: Object {name: "abc"}
+// event1 again Event {_callbacks: {…}} {name: "abc"}
+event.$off('event1'); // 解除event1观察
+event.$emit('event1', {name: 'abc'}); // undefined
+event.$emit('event2', {name: '123'});
+// event2 Event {_callbacks: {…}} {name: "123"}
 ````
