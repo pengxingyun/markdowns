@@ -36,13 +36,13 @@ function fn3() {
 
 f1();
 // fn1
-// fn1 by call
+// fn1 by call 
 f2();
 // fn2
-// fn2 by call
+// fn2 by call 
 f3();
 // fn3
-// fn3 by call
+// fn3 by call 
 ````
 
 更简单的写法：
